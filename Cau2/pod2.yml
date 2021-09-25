@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: cau2
   name: pod2
   labels:
     app: pod2

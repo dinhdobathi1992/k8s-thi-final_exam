@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: cau2
   name: busybox
   labels:
     access: accepted
