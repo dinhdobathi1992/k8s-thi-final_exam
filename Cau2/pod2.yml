@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  labels:
+    app: pod2
+spec:
+      volumes:
+      - name: myvolume
+        persistentVolumeClaim:
+          claimName: pvc1
+      containers:
+      - name: c1
+        image: busybox:1.31.1
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do date >> /vol1/date.log; sleep 10;done"]
+        volumeMounts:
+        - mountPath: "/vol1"
+          name: myvolume
+      - name: c2
+        image: busybox:1.31.1
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do tail -f /vol1/date.log; sleep 1;done"]
+        volumeMounts:
+        - mountPath: "/vol1"
+          name: myvolume
+
