@@ -4,7 +4,9 @@ metadata:
   name: access-web
   namespace: cau2
 spec:
-  podSelector: {}
+  podSelector: 
+    matchLabels:
+      app: web2
   policyTypes:
   - Ingress
   ingress:
